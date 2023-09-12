@@ -1,7 +1,49 @@
-﻿@{
+﻿@model ClarkCodingChallenge.Models.IndexViewModel
+@{
     ViewData["Title"] = "Contacts Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+    <form asp-controller="Contacts" asp-action="AddMailingListEntry" method="post" asp-validation-summary="All">
+        <!-- Input fields go here -->
+        <div class="form-group">
+            <label asp-for="FormModel.LastName">Last Name:</label>
+            <input asp-for="FormModel.LastName" class="form-control" />
+            <span asp-validation-for="FormModel.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FormModel.FirstName">First Name:</label>
+            <input asp-for="FormModel.FirstName" class="form-control" />
+            <span asp-validation-for="FormModel.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FormModel.Email">Email:</label>
+            <input asp-for="FormModel.Email" class="form-control" />
+            <span asp-validation-for="FormModel.Email" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h2>Mailing List</h2>
+    <!-- Display mailing list entries -->
+    <table>
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in Model.MailingListEntries)
+            {
+                <tr>
+                    <td>@entry.LastName</td>
+                    <td>@entry.FirstName</td>
+                    <td>@entry.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

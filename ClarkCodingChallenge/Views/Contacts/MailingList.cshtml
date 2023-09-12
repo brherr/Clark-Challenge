@@ -1,0 +1,25 @@
+@model IEnumerable<MailingListEntry>
+
+<h1>Mailing List</h1>
+
+<!-- Add form/controls for filtering and sorting here if needed -->
+
+<table>
+    <thead>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in Model)
+        {
+            <tr>
+                <td>@entry.LastName</td>
+                <td>@entry.FirstName</td>
+                <td>@entry.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

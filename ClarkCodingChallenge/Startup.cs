@@ -29,6 +29,8 @@ namespace ClarkCodingChallenge
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+						services.AddScoped<ClarkCodingChallenge.BusinessLogic.ContactsService>();
+						services.AddScoped<ClarkCodingChallenge.DataAccess.ContactsDataAccess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
